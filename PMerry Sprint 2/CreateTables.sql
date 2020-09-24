@@ -1,0 +1,345 @@
+CREATE TABLE Sale
+(
+	Sale_ID		INT		NOT NULL,
+	Min_AMT		DECIMAL(10,2)		,
+
+	CONSTRAINT Sale_PK
+		PRIMARY KEY(Sale_ID)
+);
+
+CREATE TABLE Direct_Sale
+(
+    DSale_ID		INT		NOT NULL,
+    Dollars_off		DECIMAL(10,2)	NOT NULL,
+    Sale_ID		INT		NOT NULL,
+    
+    CONSTRAINT Direct_Sale_PK
+	PRIMARY KEY(DSale_ID),
+	
+    CONSTRAINT Direct_Sale_FK
+	FOREIGN KEY(Sale_ID) REFERENCES Sale(Sale_ID)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Percentage_Sale
+(
+    PSale_ID		INT		NOT NULL,
+    Dollars_off		DECIMAL(10,2)	NOT NULL,
+    Sale_ID		INT		NOT NULL,
+    
+    CONSTRAINT Percent_Sale_PK
+	PRIMARY KEY(PSale_ID),
+	
+    CONSTRAINT Percent_Sale_FK
+	FOREIGN KEY(Sale_ID) REFERENCES Sale(Sale_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+
+);
+
+CREATE TABLE Orders
+(
+    Order_Number	INT		NOT NULL,
+    SaleID_Applied	INT			,
+
+    CONSTRAINT Orders_PK
+	PRIMARY KEY(Order_Number),
+
+    CONSTRAINT Orders_FK
+	FOREIGN KEY(SaleID_Applied) REFERENCES Sale(Sale_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Address
+(
+    Addr_ID		INT		NOT NULL,
+    State		VARCHAR(25)	NOT NULL,
+    City		VARCHAR(95)	NOT NULL,
+    Street		VARCHAR(100)	NOT NULL,
+    Apt_Num		VARCHAR(15)		,
+    Zip_Code		VARCHAR(5)	NOT NULL,
+    Addr_Nickname	VARCHAR(100)	NOT NULL,
+
+    CONSTRAINT Address_PK
+        PRIMARY KEY(Addr_ID)
+);
+
+CREATE TABLE Users
+(
+    UserID		INT		NOT NULL,
+    Name		VARCHAR(50)	NOT NULL,
+    Phone_Num		VARCHAR(14)		,
+    Email		VARCHAR(50)	NOT NULL,
+    Points		DECIMAL(15,2)	NOT NULL,
+
+    CONSTRAINT Users_PK
+	PRIMARY KEY(UserID)
+);
+
+CREATE TABLE Admin
+(
+    Admin_ID		INT		NOT NULL,
+    UserID		INT		NOT NULL,
+
+    CONSTRAINT Admin_PK
+	PRIMARY KEY(Admin_ID),
+
+    CONSTRAINT Admin_FK
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Sponsor
+(
+    Sponsor_ID		INT		NOT NULL,
+    UserID		INT		NOT NULL,
+    Sponsor_Name	VARCHAR(50)	NOT NULL,
+
+    CONSTRAINT Sponsor_PK
+	PRIMARY KEY(Sponsor_ID),
+
+    CONSTRAINT Sponsor_FK
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Driver
+(
+    Driver_ID		INT		NOT NULL,
+    UserID		INT		NOT NULL,
+    Sponsor_ID		INT		NOT NULL,
+
+    CONSTRAINT Driver_PK
+	PRIMARY KEY(Driver_ID),
+
+    CONSTRAINT Driver_FK_Users
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Driver_FK_Sponsor
+	FOREIGN KEY(Sponsor_ID) REFERENCES Sponsor(Sponsor_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Sponsored_By
+(
+    UserID		INT		NOT NULL,
+    SponsorID		INT		NOT NULL,
+
+    CONSTRAINT Sponsored_By_PK
+	PRIMARY KEY(UserID, SponsorID),
+
+    CONSTRAINT Sponsored_By_FK_Users
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Sponsored_By_FK_Sponsor
+	FOREIGN KEY(SponsorID) REFERENCES Sponsor(Sponsor_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE User_Lives_At
+(
+    UserID		INT		NOT NULL,
+    AddrID		INT		NOT NULL,
+    Is_Primary_Addr	BOOLEAN		NOT NULL,
+
+    CONSTRAINT User_Lives_At_PK
+	PRIMARY KEY(UserID, AddrID),
+
+    CONSTRAINT User_Lives_At_FK_Users
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT User_Lives_At_FL_Address
+	FOREIGN KEY(AddrID) REFERENCES Address(Addr_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT	User_Addr_Uniquity
+	UNIQUE(UserID, AddrID)
+);
+
+CREATE TABLE Places_Order
+(
+    UserID		INT		NOT NULL,
+    Order_Num		INT		NOT NULL,
+
+    CONSTRAINT Places_Order_PK
+	PRIMARY KEY(UserID, Order_Num),
+
+    CONSTRAINT Places_Order_FK_User
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Places_Order_FK_Order
+	FOREIGN KEY(Order_Num) REFERENCES Orders(Order_Number)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Cart
+(
+    Cart_ID		INT		NOT NULL,
+
+    CONSTRAINT Cart_PK
+	PRIMARY KEY(Cart_ID)
+);
+
+CREATE TABLE Fills_Cart
+(
+    User_ID		INT		NOT NULL,
+    Cart_ID		INT		NOT NULL,
+
+    CONSTRAINT Fills_Cart_PK
+	PRIMARY KEY(User_Id, Cart_ID),
+
+    CONSTRAINT Fills_Cart_FK_Users
+	FOREIGN KEY(User_ID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Fills_Cart_FK_Cart
+	FOREIGN KEY(Cart_ID) REFERENCES Cart(Cart_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Placed_For
+(
+    Order_Number	INT		NOT NULL,
+    Cart_ID		INT		NOT NULL,
+    Total_Cost		DECIMAL(10,2)	NOT NULL,
+
+    CONSTRAINT Placed_For_PK
+	PRIMARY KEY(Order_Number, Cart_ID),
+
+    CONSTRAINT Placed_For_FK_Order
+	FOREIGN KEY(Order_Number) REFERENCES Orders(Order_Number)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Placed_For_FK_Cart
+	FOREIGN KEY(Cart_ID) REFERENCES Cart(Cart_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Product
+(
+    Product_ID		INT		NOT NULL,
+    Name		VARCHAR(150)	NOT NULL,
+    Price		DECIMAL(10,2)	NOT NULL,
+    Description		VARCHAR(1000)		,
+    Display_IMG_Path	VARCHAR(200)	NOT NULL,
+
+    CONSTRAINT Product_PK
+	PRIMARY KEY(Product_ID)
+);
+
+CREATE TABLE Catalog
+(
+    Catalog_ID		INT		NOT NULL,
+    Catalog_Name	VARCHAR(100)	NOT NULL,
+
+    CONSTRAINT Catalog_PK
+	PRIMARY KEY(Catalog_ID)
+);
+
+CREATE TABLE Fills_Catalog
+(
+    Sponsor_ID		INT		NOT NULL,
+    Catalog_ID		INT		NOT NULL,
+
+    CONSTRAINT Fills_PK
+	PRIMARY KEY(Sponsor_ID, Catalog_ID),
+
+    CONSTRAINT Fills_FK_Sponsor
+	FOREIGN KEY(Sponsor_ID) REFERENCES Sponsor(Sponsor_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Fills_FK_Catalog
+	FOREIGN KEY(Catalog_ID) REFERENCES Catalog(Catalog_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Offers
+(
+    Sponsor_ID		INT		NOT NULL,
+    Catalog_ID		INT		NOT NULL,
+
+    CONSTRAINT Offers_PK
+	PRIMARY KEY(Sponsor_ID, Catalog_ID),
+
+    CONSTRAINT Offers_FK_Sponsor
+	FOREIGN KEY(Sponsor_ID) REFERENCES Sponsor(Sponsor_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Offers_FK_Catalog
+	FOREIGN KEY(Catalog_ID) REFERENCES Catalog(Catalog_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Has_Access_To
+(
+    UserID		INT		NOT NULL,
+    Catalog_ID		INT		NOT NULL,
+
+    CONSTRAINT Has_Access_To_PK
+	PRIMARY KEY(UserID, Catalog_ID),
+
+    CONSTRAINT Has_Access_To_FK_Users
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Has_Access_To_FK_Catalog
+	FOREIGN KEY(Catalog_ID) REFERENCES Catalog(Catalog_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Creates_User
+(
+    Admin_ID		INT		NOT NULL,
+    UserID		INT		NOT NULL,
+
+    CONSTRAINT Creates_User_PK
+	PRIMARY KEY(Admin_ID, UserID),
+
+    CONSTRAINT Creates_User_FK_Admin
+	FOREIGN KEY(Admin_ID) REFERENCES Admin(Admin_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Creates_User_FK_Users
+	FOREIGN KEY(UserID) REFERENCES Users(UserID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Cart_Contains
+(
+    Cart_ID		INT		NOT NULL,
+    Product_ID		INT		NOT NULL,
+    Quantity		INT UNSIGNED	NOT NULL,
+
+    CONSTRAINT Cart_Contains_PK
+	PRIMARY KEY(Cart_ID, Product_ID),
+
+    CONSTRAINT Cart_Contains_FK_Cart
+	FOREIGN KEY(Cart_ID) REFERENCES Cart(Cart_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Cart_Contains_FK_Product
+	FOREIGN KEY(Product_ID) REFERENCES Product(Product_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+CREATE TABLE Catalog_Contains
+(
+    Catalog_ID		INT		NOT NULL,
+    Product_ID		INT		NOT NULL,
+   
+    CONSTRAINT CaTalog_Contains_PK
+	PRIMARY KEY(Catalog_ID, Product_ID),
+
+    CONSTRAINT Catalog_Contains_FK_Catalog
+	FOREIGN KEY(Catalog_ID) REFERENCES Catalog(Catalog_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE,
+
+    CONSTRAINT Catalog_Contains_FK_Product
+	FOREIGN KEY(Product_ID) REFERENCES Product(Product_ID)
+	ON DELETE CASCADE   ON UPDATE CASCADE
+);
+
+
