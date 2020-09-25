@@ -1,0 +1,15 @@
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\bin\Debug\CPSC4910.exe.config
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\bin\Debug\CPSC4910.exe
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\bin\Debug\CPSC4910.pdb
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.csprojAssemblyReference.cache
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\MainWindow.g.cs
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\App.g.cs
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910_MarkupCompile.cache
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910_MarkupCompile.lref
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\MainWindow.baml
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.g.resources
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.Properties.Resources.resources
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.csproj.GenerateResource.cache
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.csproj.CoreCompileInputs.cache
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.exe
+C:\Users\Conner\source\repos\CPSC4910\CPSC4910\obj\Debug\CPSC4910.pdb
