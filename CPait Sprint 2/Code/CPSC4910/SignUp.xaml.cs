@@ -18,9 +18,9 @@ namespace CPSC4910
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignupWindow : Window
     {
-        public MainWindow()
+        public SignupWindow()
         {
             InitializeComponent();
         }
