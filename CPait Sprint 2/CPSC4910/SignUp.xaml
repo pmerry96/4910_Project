@@ -31,6 +31,8 @@
             <RowDefinition Height="5"/>
             <RowDefinition Height="30" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="2" Grid.Row="1" FontSize="28" TextAlignment="Center">
@@ -66,5 +68,9 @@
         </TextBlock>
 
         <PasswordBox Name="password_confirm" Grid.Column="2" Grid.Row="15" Height="20" />
+
+        <Button Name="signup_button" Background="White" BorderBrush="Black" BorderThickness="1" Click="OnClick1" ClickMode="Hover" Grid.Column="2" Grid.Row="16">
+            Sign Up
+        </Button>
     </Grid>
 </Window>
