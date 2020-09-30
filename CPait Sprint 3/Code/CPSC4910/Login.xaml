@@ -31,18 +31,18 @@
         </TextBlock>
 
         <TextBlock Grid.Column="2" Grid.Row="2" FontSize="18">
-            Username
+            Email
         </TextBlock>
 
-        <TextBox Name="username" Grid.Column="2" Grid.Row="3" Height="20" />
+        <TextBox x:Name="email" Grid.Column="2" Grid.Row="3" Height="20" />
 
         <TextBlock Grid.Column="2" Grid.Row="5" FontSize="18">
             Password
         </TextBlock>
 
-        <PasswordBox Name="password" Grid.Column="2" Grid.Row="6" Height="20" />
+        <PasswordBox x:Name="password" Grid.Column="2" Grid.Row="6" Height="20" />
 
-        <Button Name="login_button" Background="White" BorderBrush="Black" BorderThickness="1" ClickMode="Hover" Grid.Column="2" Grid.Row="8">
+        <Button Name="login_button" Background="White" BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="8" Click="LoginButtonClick">
             Login
         </Button>
     </Grid>

@@ -37,10 +37,11 @@ namespace CPSC4910
 
         public bool IsConnect()
         {
-            if (Connection == null)
+            if (Connection == null || Connection.State != System.Data.ConnectionState.Open)
             {
                 if (String.IsNullOrEmpty(databaseName))
                     return false;
+
                 string connstring = string.Format("Server=mysql1.cs.clemson.edu; database={0}; UID=infTest_045z; password=B00zer01", databaseName);
                 connection = new MySqlConnection(connstring);
                 connection.Open();
@@ -52,6 +53,7 @@ namespace CPSC4910
         public void Close()
         {
             connection.Close();
+            connection = null;
         }
     }
 }

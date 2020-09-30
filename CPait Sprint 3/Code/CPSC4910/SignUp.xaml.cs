@@ -62,11 +62,11 @@ namespace CPSC4910
 
             if (dbCon.IsConnect())
             {
-                string query = "INSERT INTO Users (Name, Email, Password) VALUES ('" + name + "','" + email + "','" + password + ")";
+                string query = "INSERT INTO Users (Name, Email, Password) VALUES ('" + name + "','" + email + "','" + password + "')";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 cmd.ExecuteNonQuery();
                 dbCon.Close();
-                Console.WriteLine("User signed up!");
+                MessageBox.Show("Signed up!");
             }
         }
 
