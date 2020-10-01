@@ -37,6 +37,14 @@ namespace CPSC4910
             LoginButton(email.Text, password.Password);
         }
 
+        private void SignupClick(object sender, RoutedEventArgs e)
+        {
+            SignupWindow signupWindow = new SignupWindow();
+            signupWindow.Show();
+
+            this.Close();
+        }
+
         private void LoginButton(string email, string password)
         {
             var dbCon = DBConnection.Instance();

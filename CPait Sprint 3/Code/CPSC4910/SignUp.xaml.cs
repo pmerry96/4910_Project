@@ -56,7 +56,15 @@ namespace CPSC4910
             SignupButton(name.Text, email.Text, sponsor_code.Text, password.Password);
         }
 
-        public void SignupButton(string name, string email, string sponsorCode, string password)
+        private void LoginClick(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            this.Close();
+        }
+
+            public void SignupButton(string name, string email, string sponsorCode, string password)
         {
             var dbCon = DBConnection.Instance();
 

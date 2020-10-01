@@ -30,6 +30,10 @@
             Login Form
         </TextBlock>
 
+        <TextBlock Grid.Column="3" Grid.Row="1" FontSize="15" TextAlignment="Center">
+            <Hyperlink Click="SignupClick">Sign Up Page</Hyperlink>
+        </TextBlock>
+
         <TextBlock Grid.Column="2" Grid.Row="2" FontSize="18">
             Email
         </TextBlock>
