@@ -1,7 +1,0 @@
-https://docs.microsoft.com/en-us/dotnet/csharp/
-https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
-https://csharp.net-tutorials.com/
-https://www.w3schools.com/cs/
-https://www.tutorialspoint.com/csharp/index.htm
-https://www.mysqltutorial.org/
-https://www.wpf-tutorial.com/
