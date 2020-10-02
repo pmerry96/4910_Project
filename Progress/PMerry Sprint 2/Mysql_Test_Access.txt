@@ -1,0 +1,1 @@
+mysql -h mysql1.cs.clemson.edu -u infTest_045z -p infTest_fel7
