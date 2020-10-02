@@ -1,20 +1,31 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Usage standards within this repo
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+1 - .gitignore
+	you should have ANY compiled object, binaries, or .dll files ignored by placing them in the .gitignore
+	Basically, if you generated it - it can be put in the repo
+	If a compiler generated it - it stays off of the repo.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+2 - The new project strucutre
+	Absolutely no code will go in the "Progress" folder - This is only for screenshots or write-ups of your progress
+	The project code should exist in the top level of the directory - as it is now 
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+3 - Pushing to the repo
+	If you have code that does not run - DO NOT PUSH IT TO THE REPO
+	The common saying is "Dont break the build"
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+Setting up your development Environment
+
+1 - We are using Microsoft Visual Studio 2019, where this project is using
+	a WPF App (with .NET Core)
+	  Stylet
+
+	Both of these are available in MVS2019, and you can get them as follows
+	WPF - Ensure you have the correct prerequisites downloaded. It should be Desktop Development With c#
+	Stylet - Achieved through the package manager on the Nuget Command Line
+		Tools > NuGet Package Manager > Package manager console
+		and run this command
+
+		dotnet new -i Stylet.Templates
+
+		This will install the Stylet.Templates package.
