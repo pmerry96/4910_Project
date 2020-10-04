@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Infinium.Model;
 
 
@@ -35,22 +36,19 @@ namespace Infinium
 
         public void ShowLoginScreen()
         {
-            if(_loginScreen is null)
-                _loginScreen = new LoginScreen(this);
+            _loginScreen = new LoginScreen(this);
             _loginScreen.DisplayLogin();
         }
 
         public void ShowAccountScreen()
         {
-            if(_accountScreen is null)
-                _accountScreen = new AccountScreen(_authenticatedUserAcct);
+            _accountScreen = new AccountScreen(_authenticatedUserAcct);
             _accountScreen.DisplayAccount();
         }
 
         public void ShowSignUpScreen()
         {
-            //if (_signUpScreen is null)
-                _signUpScreen = new SignUpScreen(this);
+            _signUpScreen = new SignUpScreen(this);
             _signUpScreen.DisplaySignUp();
         }
 
@@ -67,6 +65,9 @@ namespace Infinium
         }
 
         private void LoginScreen_Load(object sender, EventArgs e)
-        { }
+        { 
+            //dont delete this - its not used but the program needs it becuase some back back backend stuff references it
+            // and it only needs a pointer to the function - not any real functionality
+        }
     }
 }
