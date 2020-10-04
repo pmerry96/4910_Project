@@ -1,0 +1,10 @@
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.csprojAssemblyReference.cache
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.Properties.Resources.resources
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.csproj.GenerateResource.cache
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.csproj.CoreCompileInputs.cache
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\bin\Debug\Infinium.exe.config
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\bin\Debug\Infinium.exe
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\bin\Debug\Infinium.pdb
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.exe
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.pdb
+C:\Users\Philip\Documents\Academics\Fall 2020\CPSC 4910\Infinium\obj\Debug\Infinium.Infinium.resources
